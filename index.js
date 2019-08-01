@@ -1,3 +1,5 @@
+'use strict'
+
 const tester = require('./src/tester');
 
 const fs = require('fs');
@@ -37,7 +39,7 @@ function RumTest(tests, config) {
   }
 
   // main => main_test
-  testNames = tests.map(t => t.name + testFilePostfix.slice(0, testFilePostfix.length - 3));
+  let testNames = tests.map(t => t.name + testFilePostfix.slice(0, testFilePostfix.length - 3));
 
   // Test module file names resolved from the test folder
   let testModules = [];
@@ -92,9 +94,16 @@ function RumTest(tests, config) {
       continue;
     }
     console.log('TEST  ' + TestClass.name);
-    new TestClass().Test(test.args);
-    console.log();
+    let result = new TestClass().Test(test.args);
+    if (result instanceof Array) {
+      result.forEach(r => console.log(r));
+    } else {
+      console.log(r);
+    }
   }
 }
 
-module.exports = RumTest
+module.exports = {
+  Test: RumTest,
+  Tester: tester
+}
