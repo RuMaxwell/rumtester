@@ -1,0 +1,19 @@
+{
+  "name": "rumtester",
+  "version": "1.0.0",
+  "description": "A test framework for Node.js application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "test",
+    "framework",
+    "unit test"
+  ],
+  "author": "Ruthenium Maxwell",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.6.8"
+  }
+}
